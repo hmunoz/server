@@ -41,7 +41,5 @@ public class Person extends AbstractEntity {
 		this.age = age;
 	}
 
-	public PersonDTO toDTO(){
 
-	}
 }
