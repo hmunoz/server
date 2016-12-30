@@ -42,4 +42,12 @@ public class Person extends AbstractEntity {
 	}
 
 
+	public Person(String firstname, String lastname, Integer age) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.age = age;
+	}
+
+	public Person() {
+	}
 }

@@ -5,13 +5,16 @@ import net.mzouabi.ng2.server.model.Person;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.ReportingPolicy;
-import org.mapstruct.TargetType;
+import org.mapstruct.factory.Mappers;
 
 /**
  * Created by mouradzouabi on 04/12/15.
  */
-@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface PersonMapper {
+
+    PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);
+
 
     public PersonDTO toDTO(Person person);
 

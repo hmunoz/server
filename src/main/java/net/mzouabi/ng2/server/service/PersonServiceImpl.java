@@ -23,12 +23,11 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     PersonRepository personRepository;
 
-    @Autowired
-    PersonMapper personMapper;
+
 
     @Override
     public Page<PersonDTO> findPersons(Pageable pageable) {
-        return personRepository.findAll(pageable).map(person -> personMapper.toDTO(person));
+        return personRepository.findAll(pageable).map(person -> PersonMapper.INSTANCE.toDTO(person));
     }
 
     @Override
@@ -37,19 +36,19 @@ public class PersonServiceImpl implements PersonService {
         if (person == null) {
             return null;
         } else {
-            return personMapper.toDTO(person);
+            return PersonMapper.INSTANCE.toDTO(person);
         }
     }
 
     @Override
     public void updatePerson(PersonDTO personDTO) {
         Person person = personRepository.findOne(personDTO.getId());
-        personMapper.mapToEntity(personDTO, person);
+        PersonMapper.INSTANCE.mapToEntity(personDTO, person);
     }
 
     @Override
     public void savePerson(PersonDTO personDTO) {
-        Person person = personMapper.toEntity(personDTO);
+        Person person = PersonMapper.INSTANCE.toEntity(personDTO);
         personRepository.save(person);
     }
 
