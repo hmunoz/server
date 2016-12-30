@@ -10,10 +10,10 @@ import org.mapstruct.factory.Mappers;
 /**
  * Created by mouradzouabi on 04/12/15.
  */
-@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface PersonMapper {
 
-    PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);
+   // PersonMapper INSTANCE = Mappers.getMapper(PersonMapper.class);
 
 
     public PersonDTO toDTO(Person person);

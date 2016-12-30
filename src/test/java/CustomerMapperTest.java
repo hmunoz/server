@@ -28,10 +28,12 @@ import net.mzouabi.ng2.server.ServerApplication;
 import net.mzouabi.ng2.server.dto.CustomerDto;
 import net.mzouabi.ng2.server.dto.OrderItemDto;
 import net.mzouabi.ng2.server.mapper.CustomerMapper;
+import net.mzouabi.ng2.server.mapper.PersonMapper;
 import net.mzouabi.ng2.server.model.Customer;
 import net.mzouabi.ng2.server.model.OrderItem;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -43,6 +45,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ServerApplication.class)
 public class CustomerMapperTest {
+
+
+    @Autowired
+    CustomerMapper customerMapper;
 
     @Test
     public void testMapDtoToEntity() {
@@ -57,7 +63,7 @@ public class CustomerMapperTest {
         order1.setDateOrden("30/12/2016");
         customerDto.setOrders(new ArrayList<>( Collections.singleton( order1 ) ));
 
-        Customer customer = CustomerMapper.MAPPER.toEntity( customerDto );
+        Customer customer = customerMapper.toEntity( customerDto );
 
         assertThat( customer.getId() ).isEqualTo( 10 );
         assertThat( customer.getName() ).isEqualTo( "Filip" );
@@ -79,7 +85,7 @@ public class CustomerMapperTest {
         order1.setId( 1L );
         customer.setOrderItems( Collections.singleton( order1 ) );
 
-        CustomerDto customerDto = CustomerMapper.MAPPER.toDTO( customer );
+        CustomerDto customerDto = customerMapper.toDTO( customer);
 
         assertThat( customerDto.getId() ).isEqualTo( 10 );
         assertThat( customerDto.getCustomerName() ).isEqualTo( "Filip" );

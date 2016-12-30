@@ -28,10 +28,10 @@ import org.mapstruct.factory.Mappers;
 /**
  * @author Filip Hrisafov
  */
-@Mapper(uses = { OrderItemMapper.class })
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE,componentModel = "spring", uses = { OrderItemMapper.class })
 public interface CustomerMapper {
 
-    CustomerMapper MAPPER = Mappers.getMapper( CustomerMapper.class );
+   // CustomerMapper MAPPER = Mappers.getMapper( CustomerMapper.class );
 
 
     @Mappings({

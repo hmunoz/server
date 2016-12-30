@@ -4,6 +4,7 @@ import net.mzouabi.ng2.server.mapper.PersonMapper;
 import net.mzouabi.ng2.server.model.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -14,6 +15,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TestDto {
 
 
+    @Autowired
+    PersonMapper personMapper;
+
     @Test
     public void test() {
 
@@ -21,7 +25,7 @@ public class TestDto {
         Person paerson = new Person("Horacio", "Munoz", 36);
 
         //when
-        PersonDTO paersonDto = PersonMapper.INSTANCE.toDTO(paerson);
+        PersonDTO paersonDto = personMapper.toDTO(paerson);
 
         //then
 

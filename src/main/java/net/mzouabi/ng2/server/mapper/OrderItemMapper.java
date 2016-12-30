@@ -29,10 +29,10 @@ import org.mapstruct.factory.Mappers;
 /**
  * @author Filip Hrisafov
  */
-@Mapper
+@Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE,componentModel = "spring")
 public interface OrderItemMapper {
 
-    OrderItemMapper MAPPER = Mappers.getMapper(OrderItemMapper.class);
+   // OrderItemMapper MAPPER = Mappers.getMapper(OrderItemMapper.class);
 
 
 

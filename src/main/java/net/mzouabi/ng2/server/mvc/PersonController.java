@@ -1,9 +1,11 @@
 package net.mzouabi.ng2.server.mvc;
 
 import net.mzouabi.ng2.server.dto.PersonDTO;
+import net.mzouabi.ng2.server.mapper.PersonMapper;
 import net.mzouabi.ng2.server.service.PersonService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -24,6 +26,9 @@ public class PersonController {
 
     @Inject
     PersonService personService;
+
+    @Autowired
+    PersonMapper personMapper;
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Page<PersonDTO>> findAllPerson(Pageable pageable, HttpServletRequest req) {
