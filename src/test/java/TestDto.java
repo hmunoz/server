@@ -18,15 +18,16 @@ public class TestDto {
     public void test() {
 
         //given
-        Person car = new Person("Horacio", "Munoz", 36);
+        Person paerson = new Person("Horacio", "Munoz", 36);
 
         //when
-        PersonDTO carDto = PersonMapper.INSTANCE.toDTO(car);
+        PersonDTO paersonDto = PersonMapper.INSTANCE.toDTO(paerson);
 
         //then
 
-        assertThat(carDto).isNotNull();
-        assertThat(carDto.getFirstname()).isEqualTo("Horacio");
+        assertThat(paersonDto).isNotNull();
+        assertThat(paersonDto.getFirstname()).isEqualTo("Horacio");
+        //assertThat(paersonDto.getDateOfBirth()).isEqualTo();
 
     }
 
