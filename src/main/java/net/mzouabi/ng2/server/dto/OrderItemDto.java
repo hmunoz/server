@@ -7,6 +7,7 @@ public class OrderItemDto  extends AbstractDTO{
 
      String name;
      Long quantity;
+     String dateOrden;
 
     public String getName() {
         return name;
@@ -22,5 +23,13 @@ public class OrderItemDto  extends AbstractDTO{
 
     public void setQuantity(Long quantity) {
         this.quantity = quantity;
+    }
+
+    public String getDateOrden() {
+        return dateOrden;
+    }
+
+    public void setDateOrden(String dateOrden) {
+        this.dateOrden = dateOrden;
     }
 }

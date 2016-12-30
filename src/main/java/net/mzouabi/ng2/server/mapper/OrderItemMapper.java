@@ -23,10 +23,7 @@ import net.mzouabi.ng2.server.dto.OrderItemDto;
 import net.mzouabi.ng2.server.dto.PersonDTO;
 import net.mzouabi.ng2.server.model.OrderItem;
 import net.mzouabi.ng2.server.model.Person;
-import org.mapstruct.InheritInverseConfiguration;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingTarget;
-import org.mapstruct.ReportingPolicy;
+import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
 
 /**
@@ -37,8 +34,16 @@ public interface OrderItemMapper {
 
     OrderItemMapper MAPPER = Mappers.getMapper(OrderItemMapper.class);
 
+
+
+    @Mappings({
+            @Mapping(source = "date", target = "dateOrden", dateFormat = "dd/MM/yyyy"),
+    })
     public OrderItemDto toDTO(OrderItem orderItem);
 
+
+
+    @InheritInverseConfiguration
     public OrderItem toEntity(OrderItemDto orderItemDto);
 
     public void mapToEntity(OrderItemDto orderItemDto, @MappingTarget OrderItem orderItem);

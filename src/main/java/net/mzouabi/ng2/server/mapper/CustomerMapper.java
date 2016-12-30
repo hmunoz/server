@@ -41,10 +41,8 @@ public interface CustomerMapper {
     public CustomerDto toDTO(Customer customer);
 
 
-    @Mappings({
-            @Mapping(source = "orders", target = "orderItems"),
-            @Mapping(source = "customerName", target = "name")
-    })
+
+    @InheritInverseConfiguration
     public Customer toEntity(CustomerDto customerDto);
 
     public void mapToEntity(CustomerDto customerDto, @MappingTarget Customer customer);

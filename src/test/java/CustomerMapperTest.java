@@ -22,6 +22,7 @@ import static org.assertj.core.api.Assertions.tuple;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 
 import net.mzouabi.ng2.server.ServerApplication;
 import net.mzouabi.ng2.server.dto.CustomerDto;
@@ -53,6 +54,7 @@ public class CustomerMapperTest {
         order1.setId(1L);
         order1.setName("Table");
         order1.setQuantity( 2L);
+        order1.setDateOrden("30/12/2016");
         customerDto.setOrders(new ArrayList<>( Collections.singleton( order1 ) ));
 
         Customer customer = CustomerMapper.MAPPER.toEntity( customerDto );
@@ -73,6 +75,8 @@ public class CustomerMapperTest {
         OrderItem order1 = new OrderItem();
         order1.setName( "Table" );
         order1.setQuantity( 2L );
+        order1.setDate(new Date());
+        order1.setId( 1L );
         customer.setOrderItems( Collections.singleton( order1 ) );
 
         CustomerDto customerDto = CustomerMapper.MAPPER.toDTO( customer );
