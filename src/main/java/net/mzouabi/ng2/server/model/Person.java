@@ -16,7 +16,7 @@ public class Person extends AbstractEntity {
 
 	String lastname;
 
-	Date dateOfBirth;
+	Date dateOfBirth = new Date();
 
 	public String getFirstname() {
 		return firstname;
