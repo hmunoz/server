@@ -14,7 +14,7 @@ public interface PersonMapper {
 
     @Mappings({
             @Mapping(source = "dateOfBirth", target = "dateOfBirth", dateFormat = "dd/MM/yyyy"),
-            @Mapping(target = "age",  expression = "java(person.getAge())")
+            @Mapping(target = "age",  expression = "java(person.toAge())")
     })
     public PersonDTO toDTO(Person person);
 
