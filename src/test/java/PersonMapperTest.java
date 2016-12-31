@@ -8,11 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.ZoneId;
+import java.util.Date;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ServerApplication.class)
-public class TestDto {
+public class PersonMapperTest {
 
 
     @Autowired
@@ -22,16 +27,19 @@ public class TestDto {
     public void test() {
 
         //given
-        Person paerson = new Person("Horacio", "Munoz", 36);
+        LocalDate dateOfBitrh = LocalDate.of(1979, Month.NOVEMBER, 12);
+        Person person = new Person("Horacio", "Munoz", Date.from(dateOfBitrh.atStartOfDay(ZoneId.systemDefault()).toInstant()));
 
         //when
-        PersonDTO paersonDto = personMapper.toDTO(paerson);
+        PersonDTO personDto = personMapper.toDTO(person);
 
         //then
 
-        assertThat(paersonDto).isNotNull();
-        assertThat(paersonDto.getFirstname()).isEqualTo("Horacio");
-        //assertThat(paersonDto.getDateOfBirth()).isEqualTo();
+        assertThat(personMapper).isNotNull();
+        assertThat(personDto).isNotNull();
+        assertThat(personDto.getFirstname()).isEqualTo("Horacio");
+        assertThat(personDto.getAge()).isEqualTo(37);
+        assertThat(personDto.getDateOfBirth()).isEqualTo("12/11/1979");
 
     }
 
